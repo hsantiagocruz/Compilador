@@ -1,0 +1,38 @@
+doctype html
+html(lang='en')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Login Compilador
+
+    include includes/css/core.pug
+
+    include includes/css/custom.pug
+
+  body.bg-dark
+    .container
+      .card.card-login.mx-auto.mt-5
+        .card-header
+          center
+            img(src="images/robot.png" alt="")
+            div
+              h3 Bienvenid@
+        .card-body
+          if msg.error === true
+            .alert.alert-danger
+              |  #{msg.cont}
+          form(method="POST", action="/login")
+            .form-group
+              label(for='email') Correo electrónico
+              input#email.form-control(type='email', name="email", placeholder='Ingresa tu email', required)
+            .form-group
+              label(for='pass') Contraseña
+              input#pass.form-control(type='password', name="pass" placeholder='Ingresa tu contraseña', required)
+            .form-group
+              input.btn.btn-primary.btn-block(type='submit' value="Login") 
+          .text-center
+            a.d-block.small.mt-3(href='registro') ¿Aun no estas registrado?
+
+    include includes/js/core.pug

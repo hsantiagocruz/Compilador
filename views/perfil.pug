@@ -1,0 +1,60 @@
+doctype html
+html(lang='en')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    title Compilador
+
+    include includes/css/core.pug
+
+    // Page level plugin CSS
+    link(href='vendor/datatables/dataTables.bootstrap4.css', rel='stylesheet')
+    link(rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css")
+    include includes/css/custom.pug
+
+  body#page-top.fixed-nav.sticky-footer.bg-dark
+    include includes/navbar.pug
+    .content-wrapper
+      table(style="width:100%;  text-align:center;")
+        tr
+          td 
+            .card
+              center
+                img(src="images/robot.png" alt="" width="100" height="130")
+              h2  #{msg.nombre}
+              p #{msg.correo}
+              p #{msg.grupo}
+          td
+            h2 Programas enviados
+            .table-responsive-md-scroll-y
+              table.table
+                thead
+                  tr
+                    th(scope="col") #
+                    th(scope="col") Nombre del mundo
+                    th(scope="col") Fecha
+                    th(scope="col") Mensajes de ejecución
+                tbody
+                  tr
+                    th(scope="row") 1
+                    td Mark
+                    td Otto
+                    td @mdo 
+            
+        
+      
+      // /.container-fluid
+      // /.content-wrapper
+
+      include includes/footer.pug
+
+      include includes/scroll-to-top.pug
+
+      include includes/modals/logout.pug
+
+      include includes/js/core.pug
+
+      include includes/js/custom.pug

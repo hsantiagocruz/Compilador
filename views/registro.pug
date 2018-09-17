@@ -1,0 +1,57 @@
+doctype html
+html(lang='en')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+
+    title Registro
+
+    include includes/css/core.pug
+
+    include includes/css/custom.pug
+
+  body.bg-dark
+    .container
+      .card.card-register.mx-auto.mt-5
+        .card-header
+          center
+            img(src="images/robot.png" alt="" width="105" height="130")
+            div
+              h3 Registro
+        .card-body
+          if msg.error === true
+            .alert.alert-danger
+              strong #{msg.code}
+              |  #{msg.cont}
+          form(method="POST", action="/registro")
+            .form-group
+              .form-row
+                .col-md-6
+                  label(for='nombre') Nombre
+                  input#nombre.form-control(type='text', name="nombre", placeholder='Ingresa tu nombre', required)
+                .col-md-6
+                  label(for='apellidos') Apellidos
+                  input#apellidos.form-control(type='text', name="apellidos", placeholder='Ingresa tus apellidos', required)
+            .form-group
+              .form-row
+                .col-md-6
+                  label(for='email') Email
+                  input#email.form-control(type='email', name="email", placeholder='Ingresa tu correo', required)
+                .col-md-6
+                  label(for='pass') Contraseña
+                  input#pass.form-control(type='password', name="pass", placeholder='Contraseña', required)
+            .form-group
+              .form-row
+                .col-md-6
+                  label(for='grupo') Grupo
+                  input#grupo.form-control(type='text', name="grupo", placeholder='Ingresa tu grupo', required)
+            .form-group
+              input.btn.btn-primary.btn-block(type='submit' value="Registrar") 
+          .text-center
+            a.d-block.small.mt-3(href='login') Login 
+
+    include includes/js/core.pug

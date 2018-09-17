@@ -1,0 +1,74 @@
+doctype html
+html(lang='en')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    title Compilador
+
+    include includes/css/core.pug
+
+    // Page level plugin CSS
+    link(href='vendor/datatables/dataTables.bootstrap4.css', rel='stylesheet')
+    link(rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css")
+    script(src="js/jquery-3.3.1.min.js")
+    script(src="js/Compilador/app.js")
+
+    include includes/css/custom.pug
+
+  body#page-top.fixed-nav.sticky-footer.bg-dark
+    include includes/navbar.pug
+    .content-wrapper
+      table(style="width:100%;  text-align:center;")
+        tr
+          td 
+            .controlCompilador
+              button.btn.btn-outline-dark
+                i.fa.fa-th-large
+                |  Compilar
+              button.btn.btn-outline-dark
+                i.fa.fa-terminal
+                |  Compilar y ejecutar
+            .opcionesCompilador
+              h4 Editor:
+          td
+            .control
+              button.btn.btn-outline-dark(onclick="diseñar()")
+                i.fa.fa-paint-brush
+                |  Diseñar
+              button.btn.btn-outline-dark(onclick="downloadWorld()")
+                i.fa.fa-download
+                |  Descargar mundo
+            .opcionesControl#opcionesControl
+              input#radio1(type="radio" name="op" value="1" onclick="OnChangeRadio (this)"  checked="checked")
+              label(for="radio1") Muro
+              input#radio2(type="radio" name="op" value="2" onclick="OnChangeRadio (this)")
+              label(for="radio2") Zumbador
+        tr
+          td 
+            textarea.code#code(rows="13" cols="60" style="resize: none;")
+          td 
+            canvas#canvas1(width="650" height="325")
+              | Tu navegador no soporta canvas
+        tr
+          td 
+            textarea.messages#messages(rows="3" cols="60" style="resize: none;") Mensajes:
+          td 
+            button.btn.btn-outline-dark#tarea
+              i.fa.fa-upload
+              |  Enviar tarea al profesor
+      
+      // /.container-fluid
+      // /.content-wrapper
+
+      include includes/footer.pug
+
+      include includes/scroll-to-top.pug
+
+      include includes/modals/logout.pug
+
+      include includes/js/core.pug
+
+      include includes/js/custom.pug
