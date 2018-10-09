@@ -30,19 +30,24 @@ html(lang='en')
           td
             h2 Programas enviados
             .table-responsive-md-scroll-y
-              table.table
+              table.table(style="display: block; height: 450px; overflow-y: scroll; text-align:left;")
                 thead
                   tr
-                    th(scope="col") #
-                    th(scope="col") Nombre del mundo
-                    th(scope="col") Fecha
+                    th(scope="col") Código
                     th(scope="col") Mensajes de ejecución
+                    th(scope="col") Fecha
                 tbody
-                  tr
-                    th(scope="row") 1
-                    td Mark
-                    td Otto
-                    td @mdo 
+                  each task in msg.tabla
+                    tr
+                      td
+                        textarea(rows="3" cols="70" style="resize: none; border: none; font-size: 12px;")
+                          | #{task.codigo}
+                      td  
+                        textarea(rows="3" cols="70" style="resize: none; border: none; font-size: 12px;")
+                          | #{task.mensages}
+                      td
+                        textarea(rows="2" cols="10" style="resize: none; border: none; font-size: 12px;")
+                          | #{task.fecha}
             
         
       

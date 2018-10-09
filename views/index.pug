@@ -13,52 +13,88 @@ html(lang='en')
     // Page level plugin CSS
     link(href='vendor/datatables/dataTables.bootstrap4.css', rel='stylesheet')
     link(rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css")
+    link(href='css/codemirror.css', rel='stylesheet')
     script(src="js/jquery-3.3.1.min.js")
-    script(src="js/Compilador/app.js")
+    script(src="js/Compilador/mundo.js" )
+    script(src="js/Compilador/motor.js" )
+    script(src="js/codemirror.js")
+    script(src="js/Compilador/Compilador.js")
+    script(src="js/Compilador/app.js" )
 
     include includes/css/custom.pug
 
-  body#page-top.fixed-nav.sticky-footer.bg-dark
+  body#page-top.fixed-nav.sticky-footer.bg-dark(oncontextmenu="return false;")
     include includes/navbar.pug
     .content-wrapper
       table(style="width:100%;  text-align:center;")
         tr
           td 
             .controlCompilador
-              button.btn.btn-outline-dark
+              button.btn.btn-outline-dark#Compilar
                 i.fa.fa-th-large
                 |  Compilar
-              button.btn.btn-outline-dark
+              button.btn.btn-outline-dark#CompilarEjecutar
                 i.fa.fa-terminal
                 |  Compilar y ejecutar
             .opcionesCompilador
               h4 Editor:
           td
             .control
-              button.btn.btn-outline-dark(onclick="diseñar()")
+              button.btn.btn-outline-dark#back(style="display: none;")
+                i.fa.fa-arrow-alt-circle-lef
+                |  Atras
+              button.btn.btn-outline-dark#desing
                 i.fa.fa-paint-brush
                 |  Diseñar
-              button.btn.btn-outline-dark(onclick="downloadWorld()")
+              button.btn.btn-outline-dark#download
                 i.fa.fa-download
                 |  Descargar mundo
             .opcionesControl#opcionesControl
-              input#radio1(type="radio" name="op" value="1" onclick="OnChangeRadio (this)"  checked="checked")
-              label(for="radio1") Muro
-              input#radio2(type="radio" name="op" value="2" onclick="OnChangeRadio (this)")
-              label(for="radio2") Zumbador
+              center
+                table
+                  tr
+                    td(style="width:100px; text-align:center;")
+                      span.add-on(title="Colocar muros") Muro 
+                      input#radio1(type="radio" name="op" value="1" onclick="OnChangeRadio (this)" checked="checked")
+
+                    td(style="width:100px; text-align:center;") 
+                      span.add-on(title="Colocar zumbadores") Zumbador 
+                      input#radio2(type="radio" name="op" value="2" onclick="OnChangeRadio (this)" )
+
+                    td(style="width:100px; text-align:center;")
+                      span.add-on(title="Cambiar la ubicación del robot") Robot 
+                      input#radio3(type="radio" name="op" value="3" onclick="OnChangeRadio (this)" )
+
+                    td(style="width:100px; text-align:center; font-size: 11px;")
+                      span.add-on(title="") Click derecho para borrar
         tr
-          td 
-            textarea.code#code(rows="13" cols="60" style="resize: none;")
+          td
+            textarea.codigo#codigo(rows="15" cols="60" style="resize: none; font-size: 14px; text-align:left;")
           td 
             canvas#canvas1(width="650" height="325")
               | Tu navegador no soporta canvas
         tr
           td 
-            textarea.messages#messages(rows="3" cols="60" style="resize: none;") Mensajes:
-          td 
-            button.btn.btn-outline-dark#tarea
-              i.fa.fa-upload
-              |  Enviar tarea al profesor
+            textarea.messages#messages(rows="6" cols="60" readOnly style="resize: none; font-size: 14px") Mensajes:
+          td
+            div
+              span.add-on(title="Número de zumbadores en la mochila") Mochila: 
+         
+              textarea#mochila(type='text', name="mochila" readOnly style="width:25px; height:23px; resize: none; border: none;" )
+
+              span.add-on(title="El tiempo (en milisegundos) de espera entre pasos de Karel") Retraso(ms): 
+              textarea#retraso(type='text', name="retraso" readOnly style="width:40px; height:23px; resize: none; border: none;" )
+                | 500
+              button.btn.btn-outline-dark#retraso_mas
+                i.fa.fa-plus-circle
+              button.btn.btn-outline-dark#retraso_menos
+                i.fa.fa-minus-circle
+            .messageControl#messageControl
+              |...
+            div 
+              button.btn.btn-outline-dark#tarea
+                i.fa.fa-upload
+                |  Enviar tarea al profesor
       
       // /.container-fluid
       // /.content-wrapper
